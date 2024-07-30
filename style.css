@@ -2,8 +2,7 @@
     max-width: 650px;
     margin: 120px auto;
     border: 1px solid black;
-    padding: 50px;
-    padding-top: 25px;
+    padding: 0px 30px 60px 30px;
     background-color: #BB9AB1;
     border-radius: 10px;
     text-align: center;
@@ -36,6 +35,8 @@ input{
 }
 h1{
     background-color: blueviolet;
+    margin-top: 15px;
+    border-radius: 5px;
 }
 table{
     margin-top: 20px;
