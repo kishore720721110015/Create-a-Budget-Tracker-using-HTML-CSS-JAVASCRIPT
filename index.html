@@ -9,22 +9,18 @@
 <body>
     <div class="sec">
             <h1>Add a new transaction : </h1>
-        <div class="secon">
-            <form id="transfor">
                 <label for="type">Type :</label>
-                <select id="type" required>
+                <select id="type">
                     <option value="" disabled selected>choose any one...</option>
                     <option value="Income">Income</option>
                     <option value="Expense">Expense</option>
                     <option value="Balence">Balance</option>
                   </select>
                  <label class="nam">Name :</label>
-                 <input type="text" id="nam" required><br><br>
+                 <input type="text" id="nam"><br><br>
                  <label class="amo">Amount :</label>
-                 <input type="num" id="amoun" required> <br>
-                 <button id="Submit" class="sub" onclick= >Add to transactions</button>
-            </form>
-        </div>
+                 <input type="num" id="amoun"> <br>
+                 <button id="Submit" class="sub" onclick=addTrans()>Add to transactions</button>
         <table>
             <tr>
                 <th>Type</th>
@@ -37,38 +33,21 @@
     </div>
 </body>
     <script>
-        document.getElementById('transfor').addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    const type = document.getElementById('type').value;
-    const name = document.getElementById('nam').value;
-    const amount = document.getElementById('amoun').value;
+function addTrans(){
+    var type=document.getElementById("type").value;
+    var name=document.getElementById("nam").value;
+    var amount=document.getElementById('amoun').value;
+    var tableBody=document.getElementById("transaction");
+    
+    const row1=document.createElement('tr');
+    row1.innerHTML=`<td>${type}</td><td>${name}</td><td>${amount}</td><td><button class="del" id='btn'>Delete</button></td>`;
+    tableBody.appendChild(row1);
 
-    addTransaction(type, name, amount);
-    clearForm();
-});
-
-function addTransaction(type, name, amount){
-    const table = document.getElementById('transaction');
-    const row = document.createElement('tr');
-
-    row.innerHTML = `
-        <td>${type}</td>
-        <td>${name}</td>
-        <td>$${amount}</td>
-        <td><a href="#" onclick="deleteTransaction(this)"><button class="del">Delete</button></a></td>
-        `;
-
-    table.appendChild(row);
-    }
-function deleteTransaction(element) {
-    element.parentElement.parentElement.remove();
-}
-
-function clearForm() {
-    document.getElementById('type').value = '';
-    document.getElementById('nam').value = '';
-    document.getElementById('amoun').value = '';
+    row1.querySelector("#btn").addEventListener('click',()=>{
+        row1.remove();
+    });
 }
     </script>
 </html>
+
